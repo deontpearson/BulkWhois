@@ -20,7 +20,7 @@ def test_invalid_server_name():
     try:
         bw.lookup_ips(ips)
     except IOError as e:
-        print e
+        print(e)
         assert str(e) == "Couldn't connect to %s:%s" % (bad_server, bw.port), e
     except Exception as e2:
         # we shouldn't receive other errors
@@ -30,7 +30,7 @@ def test_valid_ips():
     ips = ["201.21.203.254", "203.21.203.254", "130.102.6.192", "192.168.0.10", "203.20.1.2", "200.200.200.200", "8.8.8.8"]
     bw = setup_server()
     recs = bw.lookup_ips(ips)
-    assert(len(recs.keys()) == len(ips))
+    assert(len(list(recs.keys())) == len(ips))
 
 def test_invalid_ips():
     # all but one of these will be ignored by whois server, should result in empty set
@@ -38,5 +38,5 @@ def test_invalid_ips():
     ips = ["203.21.203.254", "8", "foo", "400.2.2.2", "www.google.com"]
     bw = setup_server()
     recs = bw.lookup_ips(ips)
-    assert len(recs.keys()) == 1, "Received %d records, expected 1" % \
-                                  len(recs.keys())
+    assert len(list(recs.keys())) == 1, "Received %d records, expected 1" % \
+                                  len(list(recs.keys()))

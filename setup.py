@@ -1,8 +1,10 @@
 from distutils.core import setup
 
+version = open('VERSION').read()
+
 setup(
     name='BulkWhois',
-    version='0.2.2',
+    version=version,
     author='CSIRT Foundry / Chris Horsley',
     author_email='chris.horsley@csirtfoundry.com',
     packages=['bulkwhois'],

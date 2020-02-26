@@ -140,7 +140,7 @@ class BulkWhois(object):
                 # skip this line: malformed, or doesn't match out template
                 pass
             else:
-                records.setdefault(fields[ip_index], dict(zip(self.field_names, fields)))
+                records.setdefault(fields[ip_index], dict(list(zip(self.field_names, fields))))
 
         return records
 
@@ -167,12 +167,12 @@ if __name__ == "__main__":
     lookups = ["201.21.203.254", "203.21.203.254", "130.102.6.192", "192.168.0.10", "203.20.1.2", "200.200.200.200", "8.8.8.8"]
     bw = BulkWhois(leader="begin origin")
     bw.field_names=["ip", "asn", "bgp_prefix", "as_name", "cc", "register", "org_name"]
-    print bw.lookup_ips_raw(lookups)
-    print bw.lookup_ips(lookups)
+    print(bw.lookup_ips_raw(lookups))
+    print(bw.lookup_ips(lookups))
 
     bw2 = BulkWhois(leader="begin\nverbose", server="asn.cymru.coma")
     bw2.field_names=["asn", "ip", "bgp_prefix", "cc", "registry", "allocated", "as_name"]
-    print bw2.lookup_ips_raw(lookups)
-    print bw2.lookup_ips(lookups)
+    print(bw2.lookup_ips_raw(lookups))
+    print(bw2.lookup_ips(lookups))
 
 
