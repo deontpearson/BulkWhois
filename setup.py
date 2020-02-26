@@ -2,6 +2,9 @@ from distutils.core import setup
 
 version = open('VERSION').read()
 
+with open('requirements.txt') as fd:
+    requirements = [dep.strip() for dep in fd]
+
 setup(
     name='BulkWhois',
     version=version,
@@ -14,4 +17,5 @@ setup(
     license='LICENSE.txt',
     description='Interfaces for popular bulk WHOIS servers',
     long_description=open('README.txt').read(),
+    install_requires=requirements,
  )

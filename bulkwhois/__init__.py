@@ -81,7 +81,7 @@ class BulkWhois(object):
 
         try:
             tn = telnetlib.Telnet(self.server, self.port)   
-            tn.write(query)
+            tn.write(query.encode())
             result = tn.read_all()
             tn.close()
         except socket.gaierror as se:
@@ -119,7 +119,7 @@ class BulkWhois(object):
                 ValueError is "ip" field is not set in field_names.
         """
 
-        raw = self._lookup(ip_list)
+        raw = self._lookup(ip_list).decode()
 
         records = {}
         ip_index = self.field_names.index("ip")
