@@ -1,2 +1,0 @@
-v0.1, 2011-07-23 -- Initial release.
-v0.2, 2011-07-24 -- Now filtering non-IPv4 addresses inside lib.
